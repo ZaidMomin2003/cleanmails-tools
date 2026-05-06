@@ -27,6 +27,13 @@ const tools = [
     tag: 'DNS',
   },
   {
+    slug: '/email-verifier',
+    icon: '✅',
+    name: 'Bulk Email Verifier',
+    description: 'Upload a CSV email list and verify every address against 126,000+ disposable domains, MX records, and syntax rules.',
+    tag: 'Validation',
+  },
+  {
     slug: '/email-extractor',
     icon: '📧',
     name: 'Email Extractor from Text',

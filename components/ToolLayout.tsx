@@ -6,6 +6,7 @@ import PromoPopup from './PromoPopup'
 const tools = [
   { slug: '/spam-checker', name: 'Spam Checker', icon: '🛡️' },
   { slug: '/dns-checker', name: 'DNS Checker', icon: '🔍' },
+  { slug: '/email-verifier', name: 'Email Verifier', icon: '✅' },
   { slug: '/email-extractor', name: 'Email Extractor', icon: '📧' },
   { slug: '/csv-cleaner', name: 'CSV Cleaner', icon: '🧹' },
 ]
@@ -20,6 +21,11 @@ const relatedArticles: Record<string, { title: string; href: string }[]> = {
     { title: 'Cold Email Deliverability Guide', href: 'https://cleanmails.online/blog/cold-email-deliverability-guide' },
     { title: 'Why Your Cold Emails Land in Spam', href: 'https://cleanmails.online/blog/why-your-cold-emails-are-landing-in-spam-email-authentication' },
     { title: 'How to Warm Up a New Cold Email Domain', href: 'https://cleanmails.online/blog/how-to-warm-up-a-new-cold-email-domain' },
+  ],
+  '/email-verifier': [
+    { title: 'Cold Email Deliverability Guide', href: 'https://cleanmails.online/blog/cold-email-deliverability-guide' },
+    { title: 'Scaling Cold Email Without Monthly Fees', href: 'https://cleanmails.online/blog/scaling-cold-email-without-monthly-fees' },
+    { title: 'Best Cold Email Tools for Agencies 2026', href: 'https://cleanmails.online/blog/best-cold-email-tools-2026' },
   ],
   '/email-extractor': [
     { title: 'Automate Cold Email Outreach Without Subscriptions', href: 'https://cleanmails.online/blog/automate-cold-email-outreach-without-monthly-subscriptions' },
