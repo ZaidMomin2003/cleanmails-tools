@@ -20,10 +20,22 @@ const jsonLd = {
   author: { '@type': 'Organization', name: 'Cleanmails', url: 'https://cleanmails.online' },
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Is my CSV file uploaded to a server?', acceptedAnswer: { '@type': 'Answer', text: 'No. Your CSV file never leaves your browser. All parsing and cleaning happens locally using JavaScript. No data is uploaded, stored, or logged. This is important when working with prospect data containing personal information.' } },
+    { '@type': 'Question', name: 'What file size can this tool handle?', acceptedAnswer: { '@type': 'Answer', text: 'The tool handles CSV files up to 50MB, which covers most lead lists (typically 100,000+ rows). Processing happens in real-time — most files complete in under 2 seconds.' } },
+    { '@type': 'Question', name: 'What email separators does it support?', acceptedAnswer: { '@type': 'Answer', text: 'The tool handles emails separated by commas, semicolons, pipes, newlines within cells, and mixed separators in the same file. It also handles quoted fields and escaped commas using industry-standard CSV parsing.' } },
+    { '@type': 'Question', name: 'Does it preserve my other columns?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. When splitting multi-email cells into separate rows, all other column values (business name, phone, city, etc.) are copied to each new row. Column order and header names are preserved exactly.' } },
+  ],
+}
+
 export default function CsvCleanerPage() {
   return (
     <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <ToolLayout
       title="CSV Email List Cleaner"
       description="Upload a CSV where some rows have multiple emails crammed into one cell. We'll split them into separate rows and keep all your other data intact."

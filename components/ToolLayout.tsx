@@ -10,6 +10,29 @@ const tools = [
   { slug: '/csv-cleaner', name: 'CSV Cleaner', icon: '🧹' },
 ]
 
+const relatedArticles: Record<string, { title: string; href: string }[]> = {
+  '/spam-checker': [
+    { title: 'Cold Email Deliverability Guide', href: 'https://cleanmails.online/blog/cold-email-deliverability-guide' },
+    { title: 'Why Your Cold Emails Land in Spam', href: 'https://cleanmails.online/blog/why-your-cold-emails-are-landing-in-spam-email-authentication' },
+    { title: 'Best Cold Email Tools for Agencies 2026', href: 'https://cleanmails.online/blog/best-cold-email-tools-2026' },
+  ],
+  '/dns-checker': [
+    { title: 'Cold Email Deliverability Guide', href: 'https://cleanmails.online/blog/cold-email-deliverability-guide' },
+    { title: 'Why Your Cold Emails Land in Spam', href: 'https://cleanmails.online/blog/why-your-cold-emails-are-landing-in-spam-email-authentication' },
+    { title: 'How to Warm Up a New Cold Email Domain', href: 'https://cleanmails.online/blog/how-to-warm-up-a-new-cold-email-domain' },
+  ],
+  '/email-extractor': [
+    { title: 'Automate Cold Email Outreach Without Subscriptions', href: 'https://cleanmails.online/blog/automate-cold-email-outreach-without-monthly-subscriptions' },
+    { title: 'Scaling Cold Email Without Monthly Fees', href: 'https://cleanmails.online/blog/scaling-cold-email-without-monthly-fees' },
+    { title: 'Best Cold Email Tools for Agencies 2026', href: 'https://cleanmails.online/blog/best-cold-email-tools-2026' },
+  ],
+  '/csv-cleaner': [
+    { title: 'Cold Email Deliverability Guide', href: 'https://cleanmails.online/blog/cold-email-deliverability-guide' },
+    { title: 'Optimizing Sender Rotation for High Volume', href: 'https://cleanmails.online/blog/optimizing-cold-email-sender-rotation-for-high-volume-outreach' },
+    { title: 'High Volume Cold Email Infrastructure', href: 'https://cleanmails.online/blog/high-volume-cold-email-infrastructure-no-monthly-fees' },
+  ],
+}
+
 export default function ToolLayout({
   children,
   title,
@@ -84,6 +107,29 @@ export default function ToolLayout({
         {seoContent && (
           <div className="mt-16 prose-section">
             {seoContent}
+          </div>
+        )}
+
+        {/* Related blog articles */}
+        {relatedArticles[currentSlug] && (
+          <div className="mt-12 pt-8 border-t border-[var(--border)]">
+            <p className="text-[11px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-4">Related articles</p>
+            <div className="flex flex-col gap-2">
+              {relatedArticles[currentSlug].map(article => (
+                <a
+                  key={article.href}
+                  href={article.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text)] no-underline transition-colors"
+                >
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0">
+                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {article.title}
+                </a>
+              ))}
+            </div>
           </div>
         )}
 

@@ -20,10 +20,22 @@ const jsonLd = {
   author: { '@type': 'Organization', name: 'Cleanmails', url: 'https://cleanmails.online' },
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are SPF, DKIM, and DMARC records?', acceptedAnswer: { '@type': 'Answer', text: 'SPF, DKIM, and DMARC are DNS-based email authentication protocols. SPF specifies which servers can send email for your domain. DKIM adds a cryptographic signature to verify emails weren\'t tampered with. DMARC tells receiving servers what to do when authentication fails. All three are required for good email deliverability.' } },
+    { '@type': 'Question', name: 'Is this DNS checker tool free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, completely free with no signup required. Enter any domain and get instant results showing the status of all three email authentication records.' } },
+    { '@type': 'Question', name: 'Why do I need all three records for cold email?', acceptedAnswer: { '@type': 'Answer', text: 'Google and Microsoft now require SPF, DKIM, and DMARC for bulk senders. Without all three properly configured, your cold emails will likely land in spam. Even low-volume senders see significantly better inbox placement with proper authentication.' } },
+    { '@type': 'Question', name: 'How often should I check my DNS records?', acceptedAnswer: { '@type': 'Answer', text: 'Check after any DNS change, new email provider setup, or if you notice a sudden drop in deliverability. For cold email senders, a monthly check is good practice to catch any configuration drift.' } },
+  ],
+}
+
 export default function DnsCheckerPage() {
   return (
     <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <ToolLayout
       title="SPF / DKIM / DMARC Checker"
       description="Enter a domain to check all three email authentication records at once. See what's configured, what's missing, and how to fix it."

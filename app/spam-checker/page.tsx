@@ -20,10 +20,22 @@ const jsonLd = {
   author: { '@type': 'Organization', name: 'Cleanmails', url: 'https://cleanmails.online' },
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are spam trigger words in cold email?', acceptedAnswer: { '@type': 'Answer', text: 'Spam trigger words are specific phrases that email providers like Gmail and Outlook use to flag messages as potential spam. Common examples include "act now," "free," "limited time offer," and "click here." Using too many of these words routes your email to spam instead of the primary inbox.' } },
+    { '@type': 'Question', name: 'Is this spam checker tool free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, completely free with no signup required. The tool runs entirely in your browser — your email text is never sent to any server. There are no usage limits.' } },
+    { '@type': 'Question', name: 'How accurate is the spam word score?', acceptedAnswer: { '@type': 'Answer', text: 'The tool checks against 500+ known spam trigger words categorized by severity. While no tool can guarantee inbox placement (deliverability depends on many factors including DNS, sender reputation, and sending behavior), removing flagged words significantly improves your chances.' } },
+    { '@type': 'Question', name: 'What score should I aim for?', acceptedAnswer: { '@type': 'Answer', text: 'Aim for a score of 80 or above. A score below 50 means your email has too many spam triggers and should be rewritten before sending. The tool provides safer alternative words for every flagged term.' } },
+  ],
+}
+
 export default function SpamCheckerPage() {
   return (
     <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <ToolLayout
       title="Email Spam Word Checker"
       description="Paste your cold email draft below. We'll scan it for spam trigger words and score your email's deliverability risk."

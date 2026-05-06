@@ -20,10 +20,21 @@ const jsonLd = {
   author: { '@type': 'Organization', name: 'Cleanmails', url: 'https://cleanmails.online' },
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Is my data stored when I use this email extractor?', acceptedAnswer: { '@type': 'Answer', text: 'No. This tool runs entirely in your browser using JavaScript. Your text is never sent to any server — all extraction happens locally. Nothing is stored, logged, or transmitted. Close the tab and it\'s gone.' } },
+    { '@type': 'Question', name: 'What formats does the email extractor handle?', acceptedAnswer: { '@type': 'Answer', text: 'The tool extracts emails from any text format: plain text, angle brackets (<email@domain.com>), embedded in sentences, mixed with phone numbers and URLs, or separated by random characters. It handles all common email formats.' } },
+    { '@type': 'Question', name: 'Can I download the extracted emails?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. You can copy the entire deduplicated list to your clipboard with one click, or download it as a CSV file ready for import into any cold email tool.' } },
+  ],
+}
+
 export default function EmailExtractorPage() {
   return (
     <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <ToolLayout
       title="Email Extractor from Text"
       description="Paste any text — paragraphs, scraped pages, documents, LinkedIn bios — and we'll pull out every email address."
