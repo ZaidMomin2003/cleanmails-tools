@@ -24,7 +24,7 @@ export default function DnsCheckerTool() {
     setResults(null)
 
     try {
-      const res = await fetch(`/api/dns-check?domain=${encodeURIComponent(clean)}`)
+      const res = await fetch(`/tools/api/dns-check?domain=${encodeURIComponent(clean)}`)
       if (!res.ok) throw new Error('Failed to check DNS records')
       const data = await res.json()
       setResults(data.results)
