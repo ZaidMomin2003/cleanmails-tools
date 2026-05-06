@@ -16,12 +16,14 @@ export default function ToolLayout({
   description,
   ctaMessage,
   currentSlug,
+  seoContent,
 }: {
   children: React.ReactNode
   title: string
   description: string
   ctaMessage?: string
   currentSlug: string
+  seoContent?: React.ReactNode
 }) {
   const otherTools = tools.filter(t => t.slug !== currentSlug)
 
@@ -77,6 +79,13 @@ export default function ToolLayout({
       {/* Tool content */}
       <div className="container py-10 sm:py-12">
         {children}
+
+        {/* SEO content section */}
+        {seoContent && (
+          <div className="mt-16 prose-section">
+            {seoContent}
+          </div>
+        )}
 
         {/* CTA with breathing room */}
         <div className="mt-16">
